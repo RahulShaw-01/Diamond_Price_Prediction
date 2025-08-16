@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Prediction Result</title>
+  <style>
+    body {
+      background: linear-gradient(120deg, #e1e6f7 0%, #d4eeff 90%);
+      font-family: 'Segoe UI', 'Arial', sans-serif;
+      color: #222;
+      margin: 0;
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+    }
+    .result-container {
+      max-width: 440px;
+      margin: 80px auto 0 auto;
+      padding: 40px 28px;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 6px 22px rgba(10,116,218,0.13);
+      text-align: center;
+      animation: fadeIn .8s;
+    }
+    @keyframes fadeIn {from {opacity:0; transform:translateY(22px);} to {opacity:1; transform:translateY(0);}}
+    .result-icon {
+      width: 52px; height: 52px; margin-bottom: 18px;
+      filter: drop-shadow(0 2px 22px #0a74da33);
+      opacity:0.97;
+    }
+    h1 {margin-bottom:10px; color: #0a74da; font-size:2rem; font-weight:700;}
+    .predicted-price {
+      font-size: 2.3rem;
+      font-weight: 800;
+      color: #0047b6;
+      margin-bottom: 8px;
+      margin-top:18px;
+      letter-spacing:1.2px;
+      text-shadow: 0 1px 6px #098ad233;
+    }
+    .explanation {
+      font-size: 1.12rem;
+      color: #444;
+      margin-bottom: 22px;
+    }
+    .again-btn {
+      display:inline-block;
+      padding:11px 30px;
+      background: linear-gradient(120deg,#0a74da 40%, #40bfff 100%);
+      color:#fff;font-weight:700; border-radius:7px;
+      box-shadow:0 2px 8px #40bfff33; border:none;
+      font-size:1.11rem; text-decoration:none;
+      letter-spacing:0.2px;
+      transition: background .21s, transform .15s;
+      cursor: pointer;
+    }
+    .again-btn:hover, .again-btn:focus {background:linear-gradient(120deg,#094bb5 80%, #40bfff 100%);transform:scale(1.025);}
+    @media (max-width:540px){.result-container{padding:20px 7px;}}
+  </style>
+</head>
+<body>
+  <div class="result-container">
+    <img class="result-icon" src="https://img.icons8.com/color/96/diamond.png" alt="Diamond Value"/>
+    <h1>Predicted Price</h1>
+    <div class="predicted-price">&#8377; {{ final_result }}</div>
+    <div class="explanation">
+      This estimate uses the latest diamond data and AI models.<br>
+      For exact market pricing, consult with certified jewelers.
+    </div>
+    <a class="again-btn" href="{{ url_for('predict_datapoint') }}">Predict Another</a>
+  </div>
+</body>
+</html>
